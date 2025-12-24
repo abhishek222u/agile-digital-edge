@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
+import { TypeAnimation } from "react-type-animation";
 import { ArrowRight, PlayCircle } from "lucide-react";
 
 import ParticleBackground from "./ParticleBackground";
@@ -18,7 +19,7 @@ export default function Hero() {
       // Headline Animation (Word stagger attempt)
       // Since we don't have SplitText, we animate the element or children if manually split. 
       // For now, let's do a nice fade up for the whole lines with stagger.
-      
+
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(
@@ -26,18 +27,18 @@ export default function Hero() {
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, delay: 0.2 }
       )
-      .fromTo(
-        subheadlineRef.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 },
-        "-=0.5"
-      )
-      .fromTo(
-        ctaRef.current.children,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, stagger: 0.2 },
-        "-=0.3"
-      );
+        .fromTo(
+          subheadlineRef.current,
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+          "-=0.5"
+        )
+        .fromTo(
+          ctaRef.current.children,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, stagger: 0.2 },
+          "-=0.3"
+        );
 
       // Floating Shapes Animation
       shapesRef.current.forEach((shape, i) => {
@@ -65,15 +66,15 @@ export default function Hero() {
     >
       <ParticleBackground />
       {/* Background Shapes */}
-      <div 
+      <div
         ref={el => shapesRef.current[0] = el}
         className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl filter -z-10 mix-blend-screen opacity-50"
       ></div>
-      <div 
+      <div
         ref={el => shapesRef.current[1] = el}
         className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-3xl filter -z-10 mix-blend-screen opacity-50"
       ></div>
-      <div 
+      <div
         ref={el => shapesRef.current[2] = el}
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent-blue/10 rounded-full blur-3xl filter -z-10 opacity-30"
       ></div>
@@ -89,14 +90,25 @@ export default function Hero() {
             Give You an <span className="text-white relative inline-block">
               Edge
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
-                 <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
               </svg>
             </span>
           </h1>
         </div>
 
         <div ref={subheadlineRef} className="mb-10 text-gray-400 text-lg md:text-xl font-light tracking-wide">
-          <p>Web Development • Product Design • Digital Solutions</p>
+          <TypeAnimation
+            sequence={[
+              "Web Development • Product Design • Digital Solutions",
+              1000,
+              "Shopify Apps • Mobile Applications • Artifical Intelligence",
+              1000,
+            ]}
+            wrapper="p"
+            speed={50}
+            style={{ display: "inline-block" }}
+            repeat={Infinity}
+          />
         </div>
 
         <div ref={ctaRef} className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">

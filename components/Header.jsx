@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,14 +61,13 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-dark-blue/80 backdrop-blur-md shadow-lg py-4" : "bg-transparent py-6"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-dark-blue/80 backdrop-blur-md shadow-lg py-4" : "bg-transparent py-6"
+        }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold tracking-tight text-white group">
-          Agile <span className="text-primary group-hover:text-accent-blue transition-colors duration-300">Digital</span> Edge
+          <Image src="/logo/image.png" alt="Logo" width={100} height={100} />
         </Link>
 
         {/* Desktop Menu */}
@@ -76,9 +76,8 @@ export default function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium tracking-wide hover:text-primary transition-colors duration-300 relative group ${
-                pathname === link.href ? "text-primary" : "text-gray-300"
-              }`}
+              className={`text-sm font-medium tracking-wide hover:text-primary transition-colors duration-300 relative group ${pathname === link.href ? "text-primary" : "text-gray-300"
+                }`}
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-green transition-all duration-300 group-hover:w-full"></span>

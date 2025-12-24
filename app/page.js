@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      
+
       <ServicesPreview />
 
       <SelectedWork />
@@ -27,7 +27,7 @@ export default function Home() {
               <p className="text-gray-400 mb-8 text-lg">
                 We don&apos;t just build websites; we craft digital ecosystems that drive growth, engagement, and brand loyalty.
               </p>
-              
+
               <div className="space-y-4">
                 {[
                   "Award-winning design aesthetics",
@@ -42,7 +42,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            
+
             <div className="md:w-1/2 relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-20 blur-3xl rounded-full"></div>
               <div className="relative glass p-8 rounded-2xl border border-white/10">

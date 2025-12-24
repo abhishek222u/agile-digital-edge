@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Code, Palette, Zap, Layers, Smartphone, Globe, PenTool, Database } from "lucide-react";
+import { Code, Palette, Zap, Layers, Smartphone, Globe, PenTool, Database, ShoppingCart } from "lucide-react";
 
 const servicesList = [
   {
@@ -9,6 +9,18 @@ const servicesList = [
     title: "Web Development",
     desc: "Custom web applications built with Next.js, React, and Node.js. Fast, secure, and scalable.",
     tags: ["Next.js", "React", "Node.js", "Tailwind"]
+  },
+  {
+    icon: <ShoppingCart size={40} />,
+    title: "Ecommerce Development",
+    desc: "Custom Ecommerce applications built with Shopify, React, and Node.js. Fast, secure, and scalable.",
+    tags: ["Shopify", "React", "Node.js", "Tailwind"]
+  },
+  {
+    icon: <Code size={40} />,
+    title: "Shopify App",
+    desc: "Custom Shopify apps built with Shopify, React, and Node.js. Fast, secure, and scalable.",
+    tags: ["Shopify", "Apps", "User Research", "Wireframing"]
   },
   {
     icon: <Palette size={40} />,
@@ -48,13 +60,13 @@ export default function Services() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Animate Header
-      gsap.fromTo(".services-header", 
+      gsap.fromTo(".services-header",
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
       );
 
       // Animate Cards
-      gsap.fromTo(".service-card", 
+      gsap.fromTo(".service-card",
         { y: 50, opacity: 0 },
         {
           y: 0,
@@ -90,7 +102,7 @@ export default function Services() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
               <p className="text-gray-400 mb-6 leading-relaxed bg-transparent">{service.desc}</p>
-              
+
               <div className="flex flex-wrap gap-2">
                 {service.tags.map(tag => (
                   <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">

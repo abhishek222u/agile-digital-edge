@@ -72,7 +72,7 @@ export default function Work() {
             >
               {/* Background Image / Gradient */}
               <div className={`absolute inset-0 ${project.image} transition-transform duration-700 group-hover:scale-110`}></div>
-              
+
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-300"></div>
 
@@ -91,11 +91,11 @@ export default function Work() {
             </div>
           ))}
         </div>
-        
+
         <div className="text-center mt-20">
-            <Link href="/contact" className="inline-block px-8 py-3 border border-white/20 rounded-full text-white hover:bg-white hover:text-black transition-colors duration-300">
-                Start a Project
-            </Link>
+          <Link href="/contact" className="inline-block px-8 py-3 border border-white/20 rounded-full text-white hover:bg-white hover:text-black transition-colors duration-300">
+            Start a Project
+          </Link>
         </div>
       </div>
     </div>

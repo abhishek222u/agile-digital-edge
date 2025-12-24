@@ -12,7 +12,7 @@ export default function Footer() {
               Crafting premium digital experiences for forward-thinking brands.
             </p>
           </div>
-          
+
           <div>
             <h4 className="text-white font-semibold mb-6">Explore</h4>
             <ul className="space-y-4">
