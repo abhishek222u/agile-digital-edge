@@ -64,7 +64,7 @@ export default function Header() {
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-dark-blue/80 backdrop-blur-md shadow-lg py-4" : "bg-transparent py-6"
         }`}
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div className="container mx-auto px-6 flex justify-between items-center relative z-50">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold tracking-tight text-white group">
           <Image src="/logo/image.png" alt="Logo" width={100} height={100} />

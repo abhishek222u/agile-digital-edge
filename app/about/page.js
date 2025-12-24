@@ -50,12 +50,12 @@ export default function About() {
       {/* About Header */}
       <div className="container mx-auto px-6 mb-20">
         <div className="flex flex-col md:flex-row items-center gap-16">
-          <div className="md:w-1/2 about-header">
+          <div className="w-full md:w-1/2 about-header">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               We Are <span className="text-gradient">Agile Digital Edge</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              A collective of dreamers, thinkers, and doers. We don&apos;t just follow trends; we set them. 
+              A collective of dreamers, thinkers, and doers. We don&apos;t just follow trends; we set them.
               Our mission is to empower businesses with digital tools that feel like magic.
             </p>
             <div className="p-6 bg-white/5 border-l-4 border-primary rounded-r-xl">
@@ -64,13 +64,12 @@ export default function About() {
               </p>
             </div>
           </div>
-          <div className="md:w-1/2 about-text relative">
-             <div className="w-full h-80 bg-gradient-to-tr from-primary to-secondary rounded-2xl opacity-20 blur-2xl absolute inset-0 transform rotate-3"></div>
-             <div className="w-full h-80 bg-dark-blue border border-white/10 rounded-2xl relative flex items-center justify-center overflow-hidden">
-                {/* Abstract Visual or Image Placeholder */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-50 hover:scale-110 transition-transform duration-700"></div>
-                <h3 className="relative z-10 text-3xl font-bold text-white">Our Vision</h3>
-             </div>
+          <div className="w-full md:w-1/2 about-text relative">
+            <div className="w-full h-80 bg-gradient-to-tr from-primary to-secondary rounded-2xl opacity-20 blur-2xl absolute inset-0 transform rotate-3"></div>
+            <div className="w-full h-80 bg-dark-blue border border-white/10 rounded-2xl relative flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-50 hover:scale-110 transition-transform duration-700"></div>
+              <h3 className="relative z-10 text-3xl font-bold text-white">Our Vision</h3>
+            </div>
           </div>
         </div>
       </div>
