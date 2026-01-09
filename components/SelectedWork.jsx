@@ -8,21 +8,71 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// SVG Icons Map
+const TechIcons = {
+  NextJS: (props) => (
+    <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <mask id="mask0_408_134" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180">
+        <circle cx="90" cy="90" r="90" fill="white" />
+      </mask>
+      <g mask="url(#mask0_408_134)">
+        <circle cx="90" cy="90" r="90" fill="white" />
+        <path d="M149.508 157.52L69.142 54H54V125.97H66.6V72.698L136.008 163.322C140.724 161.648 145.242 159.71 149.508 157.52ZM115.65 54H128.25V125.97H115.65V54Z" fill="black" />
+      </g>
+    </svg>
+  ),
+  React: (props) => (
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <circle cx="12" cy="12" r="2" fill="#61DAFB" />
+      <g stroke="#61DAFB" strokeWidth="1.5">
+        <ellipse cx="12" cy="12" rx="10" ry="4.5" />
+        <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)" />
+        <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)" />
+      </g>
+    </svg>
+  ),
+  NodeJS: (props) => (
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M16 2L3 9.4V22.6L16 30L29 22.6V9.4L16 2Z" fill="#339933" />
+      <path d="M16 2.5L28.5 9.7V22.3L16 29.5L3.5 22.3V9.7L16 2.5Z" stroke="#339933" />
+      <path d="M22 17.5C21.4 18.5 20.3 19 19.3 19H12.7C11.7 19 10.6 18.5 10 17.5L8 14H12V16H20V14H24L22 17.5Z" fill="white" />
+    </svg>
+  ),
+  Shopify: (props) => (
+    <Image src={"/shopify.webp"} alt="shopify" width={300} height={343.2} {...props}></Image>
+  ),
+  WordPress: (props) => (
+    <Image src={"/wordpress.png"} alt="wordpress" width={300} height={343.2} {...props}></Image>
+  ),
+  HTML: (props) => (
+    <Image src={"/html-5.png"} alt="html" width={300} height={343.2} {...props}></Image>
+  ),
+  CSS: (props) => (
+    <Image src={"/css-3.png"} alt="css" width={300} height={343.2} {...props}></Image>
+  ),
+  JS: (props) => (
+    <Image src={"/js.png"} alt="js" width={300} height={343.2} {...props}></Image>
+  ),
+};
+
 const selectedWorks = [
   {
     title: "Pharmmaex",
     category: "Pharmaceuticals",
     image: "/pharmmaex.jpeg",
+    tech: ["NextJS", "React", "NodeJS"],
   },
   {
     title: "Compression",
     category: "Sport Branding",
     image: "/compression.jpeg",
+    tech: ["Shopify"],
   },
   {
     title: "SundanceYoga",
     category: "Yoga And Healing",
     image: "/sundanceyoga.jpeg",
+    tech: ["WordPress", "HTML", "CSS", "JS"],
   },
 ];
 
@@ -96,9 +146,21 @@ export default function SelectedWork() {
               {/* Content */}
               <div className="w-full md:w-2/5">
                 <span className="text-primary text-sm font-bold tracking-wider uppercase mb-2 block">{work.category}</span>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
-                  {work.title}
-                </h3>
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <h3 className="text-3xl md:text-4xl font-bold text-white group-hover:text-primary transition-colors duration-300">
+                    {work.title}
+                  </h3>
+                  <div className="flex items-center gap-2">
+                    {work.tech && work.tech.map((techName) => {
+                      const Icon = TechIcons[techName];
+                      return Icon ? (
+                        <div key={techName} className="p-1.5 bg-white rounded-full hover:bg-white/20 transition-colors" title={techName}>
+                          <Icon className="w-5 h-5" />
+                        </div>
+                      ) : null;
+                    })}
+                  </div>
+                </div>
                 <p className="text-gray-400 mb-8 leading-relaxed">
                   A premium digital experience designed to solve complex user problems while engaging customers with immersive visuals and intuitive navigation.
                 </p>
@@ -109,6 +171,7 @@ export default function SelectedWork() {
             </div>
           ))}
         </div>
+
 
         <div className="mt-12 text-center md:hidden">
           <Link href="/work" className="inline-flex items-center text-primary font-medium hover:text-white transition-colors">
