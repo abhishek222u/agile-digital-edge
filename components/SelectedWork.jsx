@@ -19,6 +19,11 @@ const selectedWorks = [
     category: "Sport Branding",
     image: "/compression.jpeg",
   },
+  {
+    title: "SundanceYoga",
+    category: "Yoga And Healing",
+    image: "/sundanceyoga.jpeg",
+  },
 ];
 
 export default function SelectedWork() {
