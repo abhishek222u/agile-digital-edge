@@ -43,11 +43,10 @@ export default function SelectedWork() {
       gsap.utils.toArray(".project-image").forEach((img) => {
         gsap.to(img, {
           objectPosition: "0% 100%",
-          duration: 4,
+          duration: 12,
           ease: "sine.inOut",
           repeat: -1,
-          yoyo: true,
-          repeatDelay: 1,
+          repeatDelay: 2,
           scrollTrigger: {
             trigger: img,
             start: "top 85%",
