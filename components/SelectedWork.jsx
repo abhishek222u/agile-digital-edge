@@ -1,43 +1,32 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const selectedWorks = [
   {
     title: "Pharmmaex",
     category: "Pharmaceuticals",
-    video: "https://agiledigitaledge.com/agile_website_assets/pharmmaexvideo.mov",
+    image: "/pharmmaex.jpeg",
   },
   {
     title: "Compression",
     category: "Sport Branding",
-    video: "https://agiledigitaledge.com/agile_website_assets/compression.mov",
-  },
-  {
-    title: "The Fitness Professor",
-    category: "Fitness",
-    video: "https://agiledigitaledge.com/agile_website_assets/fitnessprofessor.mov",
+    image: "/compression.jpeg",
   },
 ];
 
 export default function SelectedWork() {
   const containerRef = useRef(null);
-  const videoRefs = useRef([]); // 1. Yaha hum ek array banayenge saare videos ke liye
-
-  // 2. Ye Effect chalega aur saare videos ki speed set karega
-  useEffect(() => {
-    videoRefs.current.forEach((video) => {
-      if (video) {
-        video.playbackRate = 3.0; // Speed yaha set karein
-      }
-    });
-  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Card Entry Animation
       gsap.from(".work-card", {
         scrollTrigger: {
           trigger: containerRef.current,
@@ -48,6 +37,23 @@ export default function SelectedWork() {
         duration: 0.8,
         stagger: 0.15,
         ease: "power3.out",
+      });
+
+      // Image Auto Scroll Animation
+      gsap.utils.toArray(".project-image").forEach((img) => {
+        gsap.to(img, {
+          objectPosition: "0% 100%",
+          duration: 4,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+          repeatDelay: 1,
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%",
+            toggleActions: "play pause resume pause",
+          },
+        });
       });
     }, containerRef);
     return () => ctx.revert();
@@ -73,28 +79,14 @@ export default function SelectedWork() {
               className={`work-card flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-16`}
             >
               {/* Media Container */}
-              <div className="w-full md:w-3/5 h-[300px] md:h-[357px] rounded-2xl overflow-hidden relative cursor-pointer shadow-2xl overflow-hidden">
-                {work.video ? (
-                  <video
-                    ref={(el) => (videoRefs.current[index] = el)}
-                    src={work.video}
-                    autoPlay
-                    loop
-                    muted
-                    preload="auto"
-                    playsInline
-                    onLoadedMetadata={(e) => e.target.playbackRate = 3.0}
-                    className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 rounded-2xl"
-                  />
-                ) : (
-                  <Image
-                    src={work.image}
-                    alt={work.title}
-                    fill
-                    className="object-contain group-hover:scale-105 transition-transform duration-700"
-                  />
-                )}
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+              <div className="w-full md:w-3/5 aspect-video md:aspect-[16/10] lg:h-[500px] rounded-2xl overflow-hidden relative shadow-2xl overflow-hidden group">
+                <Image
+                  src={work.image}
+                  alt={work.title}
+                  fill
+                  className="project-image object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-black/20 transition-colors duration-300 pointer-events-none"></div>
               </div>
 
               {/* Content */}
