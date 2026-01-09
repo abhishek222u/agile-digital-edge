@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 export default function Header() {
@@ -15,7 +15,33 @@ export default function Header() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Services", href: "/services" },
+    {
+      name: "Services",
+      href: "/services",
+      dropdown: [
+        { name: "Software Development", href: "/services" },
+        { name: "Mobile App Development", href: "/services" },
+        { name: "Cloud Computing", href: "/services" },
+        { name: "DevSecOps Services", href: "/services" },
+        { name: "AI Development", href: "/services" },
+        { name: "Software Testing", href: "/services" },
+        { name: "Web Design Service", href: "/services" },
+        { name: "DevOps Services", href: "/services" },
+        { name: "Nearshore Software Development", href: "/services" },
+        { name: "Convenience/Retail Solutions", href: "/services" },
+      ],
+    },
+    {
+      name: "Resources",
+      href: "/resources",
+      dropdown: [
+        { name: "Blogs", href: "/resources" },
+        { name: "Success Stories", href: "/resources" },
+        { name: "Press Release", href: "/resources" },
+        { name: "Pricing", href: "/resources" },
+        { name: "QA Calculator", href: "/resources" },
+      ],
+    },
     { name: "About", href: "/about" },
     { name: "Work", href: "/work" },
     { name: "Contact", href: "/contact" },
@@ -71,25 +97,46 @@ export default function Header() {
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
           {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={`text-sm font-medium tracking-wide hover:text-primary transition-colors duration-300 relative group ${pathname === link.href ? "text-primary" : "text-gray-300"
-                }`}
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-green transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+            <div key={link.name} className="relative group">
+              <Link
+                href={link.href}
+                className={`text-sm font-medium tracking-wide hover:text-primary transition-colors duration-300 flex items-center gap-1 ${pathname === link.href ? "text-primary" : "text-gray-300"
+                  }`}
+              >
+                {link.name}
+                {link.dropdown && <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-green transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+
+              {/* Dropdown Menu */}
+              {link.dropdown && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-max bg-white text-gray-800 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top p-4 min-w-[200px] z-50">
+                  <div className={`grid gap-x-8 gap-y-2 ${link.dropdown.length > 5 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                    {link.dropdown.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="block px-2 py-1.5 hover:text-primary text-sm font-medium hover:bg-gray-50 rounded transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
-          <Link
-            href="/contact"
-            className="px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105"
-          >
-            Let&apos;s Talk
-          </Link>
         </nav>
+
+        {/* Let's Talk Button */}
+        <Link
+          href="/contact"
+          className="hidden md:inline-flex px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105"
+        >
+          Let&apos;s Talk
+        </Link>
 
         {/* Mobile Toggle */}
         <button
@@ -106,17 +153,32 @@ export default function Header() {
         className="fixed inset-0 bg-dark-blue z-40 hidden flex-col justify-center items-center h-screen w-screen"
         style={{ transform: "translateX(100%)" }}
       >
-        <nav className="flex flex-col space-y-8 text-center">
+        <nav className="flex flex-col space-y-6 text-center max-h-[80vh] overflow-y-auto px-4">
           {navLinks.map((link, index) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              ref={(el) => (linksRef.current[index] = el)}
-              onClick={() => setIsOpen(false)}
-              className="text-3xl font-bold text-white hover:text-primary transition-colors"
-            >
-              {link.name}
-            </Link>
+            <div key={link.name} className="flex flex-col items-center">
+              <Link
+                href={link.href}
+                ref={(el) => (linksRef.current[index] = el)}
+                onClick={() => !link.dropdown && setIsOpen(false)}
+                className="text-2xl font-bold text-white hover:text-primary transition-colors mb-2"
+              >
+                {link.name}
+              </Link>
+              {link.dropdown && (
+                <div className="flex flex-col space-y-2 mt-2">
+                  {link.dropdown.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-lg text-gray-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
       </div>
