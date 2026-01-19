@@ -5,9 +5,9 @@ export default function CallToAction() {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background gradients */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 to-secondary/10 -z-10"></div>
-      <div className="absolute -top-20 -right-20 w-80 h-80 bg-accent-blue/20 rounded-full blur-[100px]"></div>
-      <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-accent-green/20 rounded-full blur-[100px]"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 to-secondary/5 -z-10"></div>
+      {/* <div className="absolute -top-20 -right-20 w-80 h-80 bg-accent-blue/20 rounded-full blur-[100px]"></div> */}
+      {/* <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-accent-green/20 rounded-full blur-[100px]"></div> */}
 
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">

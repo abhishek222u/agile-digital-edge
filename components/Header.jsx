@@ -33,13 +33,13 @@ export default function Header() {
     },
     {
       name: "Resources",
-      href: "/resources",
+      href: "/",
       dropdown: [
-        { name: "Blogs", href: "/resources" },
-        { name: "Success Stories", href: "/resources" },
-        { name: "Press Release", href: "/resources" },
-        { name: "Pricing", href: "/resources" },
-        { name: "QA Calculator", href: "/resources" },
+        { name: "Blogs", href: "/" },
+        { name: "Success Stories", href: "/" },
+        { name: "Press Release", href: "/" },
+        { name: "Pricing", href: "/" },
+        { name: "QA Calculator", href: "/" },
       ],
     },
     { name: "About", href: "/about" },
@@ -93,16 +93,16 @@ export default function Header() {
       <div className="container mx-auto px-6 flex justify-between items-center relative z-50">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold tracking-tight text-white group">
-          <Image src="/logo/image.png" alt="Logo" width={100} height={100} />
+          <img src="/logo/LogoSize.svg" alt="Logo" className="w-36" />
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <nav className="hidden md:flex items-center space-x-5 lg:space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
           {navLinks.map((link) => (
             <div key={link.name} className="relative group">
               <Link
                 href={link.href}
-                className={`text-sm font-medium tracking-wide hover:text-primary transition-colors duration-300 flex items-center gap-1 ${pathname === link.href ? "text-primary" : "text-gray-300"
+                className={`text-sm font-medium tracking-wide hover:text-primary transition-colors duration-300 flex items-center gap-1 ${pathname === link.href && link.name != "Resources" ? "text-primary" : "text-gray-300"
                   }`}
               >
                 {link.name}

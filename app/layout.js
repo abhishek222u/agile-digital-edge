@@ -12,6 +12,11 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata = {
   title: "Agile Digital Edge | Modern Digital Agency",
   description: "Building Digital Experiences That Give You an Edge. Web Development, Product Design, and more.",
+  icons: {
+    icon: "/logo/Logo-black.jpg",
+    shortcut: "/logo/Logo-black.jpg",
+    apple: "/logo/Logo-black.jpg",
+  },
 };
 
 export default function RootLayout({ children }) {

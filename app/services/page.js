@@ -1,20 +1,20 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Code, Palette, Zap, Layers, Smartphone, Globe, PenTool, Database, ShoppingCart } from "lucide-react";
+import { Code, Palette, Zap, Layers, Smartphone, Globe, PenTool, Database, ShoppingCart, Search, Share2 } from "lucide-react";
 
 const servicesList = [
   {
     icon: <Globe size={40} />,
     title: "Web Development",
     desc: "Custom web applications built with Next.js, React, and Node.js. Fast, secure, and scalable.",
-    tags: ["Next.js", "React", "Node.js", "Tailwind"]
+    tags: ["Next.js", "React", "Node.js", "Tailwind", "Wordpress"]
   },
   {
     icon: <ShoppingCart size={40} />,
     title: "Ecommerce Development",
     desc: "Custom Ecommerce applications built with Shopify, React, and Node.js. Fast, secure, and scalable.",
-    tags: ["Shopify", "React", "Node.js", "Tailwind"]
+    tags: ["Shopify", "React", "Node.js", "Tailwind", "Wordpress"]
   },
   {
     icon: <Code size={40} />,
@@ -35,6 +35,18 @@ const servicesList = [
     tags: ["React Native", "iOS", "Android", "Flutter"]
   },
   {
+    icon: <Search size={40} />,
+    title: "Search Engine Optimization",
+    desc: "Improve your online visibility and drive organic traffic with our comprehensive SEO strategies.",
+    tags: ["Business Listing", "On-page Optimization", "Off-page Optimization"]
+  },
+  {
+    icon: <Share2 size={40} />,
+    title: "Social Media Marketing",
+    desc: "Boost your brand presence and engage with your audience across all major social platforms.",
+    tags: ["Instagram", "Facebook", "LinkedIn", "Twitter", "Strategy"]
+  },
+  {
     icon: <Zap size={40} />,
     title: "Brand Strategy",
     desc: "Building strong brand identities that communicate your values and vision effectively.",
@@ -51,7 +63,7 @@ const servicesList = [
     title: "Cloud Solutions",
     desc: "Scalable cloud infrastructure setup and management for your growing business.",
     tags: ["AWS", "Azure", "Google Cloud", "DevOps"]
-  }
+  },
 ];
 
 export default function Services() {
@@ -82,7 +94,7 @@ export default function Services() {
   }, []);
 
   return (
-    <div ref={containerRef} className="pt-32 pb-20 min-h-screen">
+    <div ref={containerRef} className="pt-40 pb-20 min-h-screen">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 services-header opacity-0">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Services</h1>

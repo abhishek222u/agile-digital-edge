@@ -2,10 +2,10 @@
 
 @theme {
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  
-  --color-primary: #3b82f6; 
+
+  --color-primary: #3b82f6;
   --color-secondary: #10b981;
-  --color-dark-blue: #020617;
+  --color-dark-blue: #09090b;
   --color-dark-green: #064e3b;
   --color-accent-blue: #00f0ff;
   --color-accent-green: #00ff9d;
@@ -17,7 +17,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #020617 0%, #064e3b 100%);
+  background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 100%);
   color: var(--foreground);
   font-family: var(--font-sans);
   min-height: 100vh;
@@ -32,7 +32,7 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #60a5fa, #34d399); 
+  background: linear-gradient(to right, #60a5fa, #34d399);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

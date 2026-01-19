@@ -1,91 +1,122 @@
 "use client";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
+import { ArrowRight, Stethoscope, Landmark, ShoppingBag, Building2, Activity, Rocket, GraduationCap, Plane, Truck, Car, Film, Leaf } from "lucide-react";
 import Link from "next/link";
 
-const projects = [
+const industries = [
   {
-    title: "Neon Finance",
-    category: "Fintech App",
-    image: "bg-gradient-to-br from-blue-600 to-indigo-900",
+    title: "Healthcare & Pharma",
+    desc: "Empowering medical providers with secure, patient-centric digital platforms.",
+    icon: <Stethoscope size={48} strokeWidth={1.5} />,
+    gradient: "from-emerald-400 to-teal-600",
   },
   {
-    title: "EcoSphere",
-    category: "Sustainability Platform",
-    image: "bg-gradient-to-br from-green-500 to-emerald-900",
+    title: "Fintech & Banking",
+    desc: "Secure, high-performance solutions for the future of finance and payments.",
+    icon: <Landmark size={48} strokeWidth={1.5} />,
+    gradient: "from-blue-400 to-indigo-600",
   },
   {
-    title: "Aura Architect",
-    category: "Portfolio Website",
-    image: "bg-gradient-to-br from-purple-500 to-pink-900",
+    title: "E-Commerce & Retail",
+    desc: "Driving sales with high-converting, seamless online shopping experiences.",
+    icon: <ShoppingBag size={48} strokeWidth={1.5} />,
+    gradient: "from-purple-400 to-pink-600",
   },
   {
-    title: "Quantum Dashboard",
-    category: "SaaS Analytics",
-    image: "bg-gradient-to-br from-cyan-500 to-blue-900",
+    title: "Real Estate & Architecture",
+    desc: "Showcasing properties and designs with immersive visual experiences.",
+    icon: <Building2 size={48} strokeWidth={1.5} />,
+    gradient: "from-orange-400 to-red-600",
   },
   {
-    title: "Luxe Realty",
-    category: "Real Estate",
-    image: "bg-gradient-to-br from-orange-400 to-red-900",
+    title: "Sports & Fitness",
+    desc: "Engaging apps and platforms that inspire movement and track performance.",
+    icon: <Activity size={48} strokeWidth={1.5} />,
+    gradient: "from-yellow-400 to-orange-500",
   },
   {
-    title: "CyberGuard",
-    category: "Cybersecurity",
-    image: "bg-gradient-to-br from-slate-600 to-black",
+    title: "SaaS & Startups",
+    desc: "Scalable MVPs and full-stack products designed for rapid growth.",
+    icon: <Rocket size={48} strokeWidth={1.5} />,
+    gradient: "from-cyan-400 to-blue-500",
+  },
+  {
+    title: "Education & EdTech",
+    desc: "Transforming learning with interactive LMS and educational platforms.",
+    icon: <GraduationCap size={48} strokeWidth={1.5} />,
+    gradient: "from-rose-400 to-pink-600",
+  },
+  {
+    title: "Travel & Hospitality",
+    desc: "Seamless booking engines and immersive experiences for the modern traveler.",
+    icon: <Plane size={48} strokeWidth={1.5} />,
+    gradient: "from-sky-400 to-cyan-500",
+  },
+  {
+    title: "Logistics & Supply Chain",
+    desc: "Optimizing operations with smart tracking, fleet management, and analytics.",
+    icon: <Truck size={48} strokeWidth={1.5} />,
+    gradient: "from-violet-400 to-purple-600",
+  },
+  {
+    title: "Automotive & Mobility",
+    desc: "Connected vehicle solutions and smart mobility platforms.",
+    icon: <Car size={48} strokeWidth={1.5} />,
+    gradient: "from-red-500 to-orange-600",
+  },
+  {
+    title: "Media & Entertainment",
+    desc: "Streaming platforms and interactive content delivery systems.",
+    icon: <Film size={48} strokeWidth={1.5} />,
+    gradient: "from-pink-500 to-rose-600",
+  },
+  {
+    title: "Green Energy & Utilities",
+    desc: "Sustainable tech solutions for renewable energy and smart grids.",
+    icon: <Leaf size={48} strokeWidth={1.5} />,
+    gradient: "from-green-400 to-emerald-600",
   },
 ];
 
 export default function Work() {
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".project-card", {
-        y: 100,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        delay: 0.2
-      });
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div ref={containerRef} className="pt-32 pb-20 min-h-screen">
+    <div ref={containerRef} className="pt-40 pb-20 min-h-screen bg-dark-blue">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Selected Work</h1>
+        <div className="text-center mb-20">
+          <span className="text-primary text-sm font-bold tracking-widest uppercase mb-4 block">Industries We Serve</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Targeting Your Niche</h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            A showcase of our finest digital craftsmanship.
+            We build specialized digital solutions tailored to the unique challenges and opportunities of your industry.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {industries.map((item, index) => (
             <div
               key={index}
-              className="project-card group relative h-96 rounded-2xl overflow-hidden cursor-pointer"
+              className="industry-card group relative p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/10"
             >
-              {/* Background Image / Gradient */}
-              <div className={`absolute inset-0 ${project.image} transition-transform duration-700 group-hover:scale-110`}></div>
+              {/* Hover Gradient Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-colors duration-300"></div>
+              <div className="relative z-10">
+                <div className={`w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-500 bg-gradient-to-br ${item.gradient} shadow-lg shadow-black/20`}>
+                  {item.icon}
+                </div>
 
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                <p className="text-primary font-medium mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 transform -translate-y-2 group-hover:translate-y-0 text-sm tracking-wider uppercase">
-                  {project.category}
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">
+                  {item.title}
+                </h3>
+
+                <p className="text-gray-400 leading-relaxed mb-6 group-hover:text-gray-300 transition-colors">
+                  {item.desc}
                 </p>
-                <div className="flex justify-between items-center">
-                  <h3 className="text-3xl font-bold text-white mb-0">{project.title}</h3>
-                  <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
-                    <ArrowUpRight size={20} />
-                  </div>
+
+                <div className="flex items-center text-primary font-medium opacity-100 transform translate-y-0 lg:opacity-0 lg:translate-y-4 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-300">
+                  <span>Learn more</span>
+                  <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </div>
@@ -93,8 +124,9 @@ export default function Work() {
         </div>
 
         <div className="text-center mt-20">
-          <Link href="/contact" className="inline-block px-8 py-3 border border-white/20 rounded-full text-white hover:bg-white hover:text-black transition-colors duration-300">
-            Start a Project
+          <p className="text-gray-400 mb-6">Don&apos;t see your industry?</p>
+          <Link href="/contact" className="inline-flex items-center px-8 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/25">
+            Let&apos;s Discuss Your Needs
           </Link>
         </div>
       </div>
