@@ -10,7 +10,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "Agile Digital Edge | Modern Digital Agency",
+  title: "AgileDigitalEdge | Modern Digital Agency",
   description: "Building Digital Experiences That Give You an Edge. Web Development, Product Design, and more.",
   icons: {
     icon: "/logo/Logo-black.jpg",
