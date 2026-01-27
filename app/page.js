@@ -2,6 +2,7 @@
 import dynamic from 'next/dynamic';
 import Hero from "../components/Hero";
 import WhyChooseUs from '@/components/WhyChooseUs';
+import CloudflareError from '@/components/CloudflareError';
 
 // Dynamically import components that are not immediately visible
 const ServicesPreview = dynamic(() => import("../components/ServicesPreview"), {
@@ -22,20 +23,6 @@ const CallToAction = dynamic(() => import("../components/CallToAction"), {
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-
-      <ServicesPreview />
-
-      <SelectedWork />
-
-      <WhyChooseUs />
-
-      <Process />
-
-      <Testimonials />
-
-      <CallToAction />
-    </>
+    <CloudflareError />
   );
 }
