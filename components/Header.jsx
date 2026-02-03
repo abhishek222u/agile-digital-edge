@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { Menu, X, ChevronDown } from "lucide-react";
-import Image from "next/image";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,27 +18,24 @@ export default function Header() {
       name: "Services",
       href: "/services",
       dropdown: [
-        { name: "Software Development", href: "/services" },
-        { name: "Mobile App Development", href: "/services" },
-        { name: "Cloud Computing", href: "/services" },
-        { name: "DevSecOps Services", href: "/services" },
-        { name: "AI Development", href: "/services" },
-        { name: "Software Testing", href: "/services" },
-        { name: "Web Design Service", href: "/services" },
-        { name: "DevOps Services", href: "/services" },
-        { name: "Nearshore Software Development", href: "/services" },
-        { name: "Convenience/Retail Solutions", href: "/services" },
+        { name: "Web Development", href: "/services/web-development" },
+        { name: "Ecommerce Development", href: "/services/ecommerce-development" },
+        { name: "Shopify App Development", href: "/services/shopify-app" },
+        { name: "UI/UX Design", href: "/services/ui-ux-design" },
+        { name: "Mobile App Development", href: "/services/mobile-app-development" },
+        { name: "SEO", href: "/services/seo" },
+        { name: "Social Media Marketing", href: "/services/social-media-marketing" },
+        { name: "Brand Strategy", href: "/services/brand-strategy" },
+        { name: "Content Creation", href: "/services/content-creation" },
+        { name: "Cloud Solutions", href: "/services/cloud-solutions" },
       ],
     },
     {
       name: "Resources",
-      href: "/",
+      href: null,
       dropdown: [
-        { name: "Blogs", href: "/" },
-        { name: "Success Stories", href: "/" },
-        { name: "Press Release", href: "/" },
-        { name: "Pricing", href: "/" },
-        { name: "QA Calculator", href: "/" },
+        { name: "Blogs", href: "/blogs" },
+        { name: "Success Stories", href: "/success-stories" },
       ],
     },
     { name: "About", href: "/about" },
@@ -100,15 +96,23 @@ export default function Header() {
         <nav className="hidden md:flex items-center space-x-5 lg:space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
           {navLinks.map((link) => (
             <div key={link.name} className="relative group">
-              <Link
-                href={link.href}
-                className={`text-sm font-medium tracking-wide hover:text-primary transition-colors duration-300 flex items-center gap-1 ${pathname === link.href && link.name != "Resources" ? "text-primary" : "text-gray-300"
-                  }`}
-              >
-                {link.name}
-                {link.dropdown && <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-green transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+              {link.href ? (
+                <Link
+                  href={link.href}
+                  className={`text-sm font-medium tracking-wide hover:text-primary transition-colors duration-300 flex items-center gap-1 ${pathname === link.href ? "text-primary" : "text-gray-300"
+                    }`}
+                >
+                  {link.name}
+                  {link.dropdown && <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-green transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              ) : (
+                <span className="text-sm font-medium tracking-wide hover:text-primary transition-colors duration-300 flex items-center gap-1 text-gray-300 cursor-pointer">
+                  {link.name}
+                  {link.dropdown && <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent-green transition-all duration-300 group-hover:w-full"></span>
+                </span>
+              )}
 
               {/* Dropdown Menu */}
               {link.dropdown && (
@@ -156,14 +160,23 @@ export default function Header() {
         <nav className="flex flex-col space-y-6 text-center max-h-[80vh] overflow-y-auto px-4">
           {navLinks.map((link, index) => (
             <div key={link.name} className="flex flex-col items-center">
-              <Link
-                href={link.href}
-                ref={(el) => (linksRef.current[index] = el)}
-                onClick={() => !link.dropdown && setIsOpen(false)}
-                className="text-2xl font-bold text-white hover:text-primary transition-colors mb-2"
-              >
-                {link.name}
-              </Link>
+              {link.href ? (
+                <Link
+                  href={link.href}
+                  ref={(el) => (linksRef.current[index] = el)}
+                  onClick={() => !link.dropdown && setIsOpen(false)}
+                  className="text-2xl font-bold text-white hover:text-primary transition-colors mb-2"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <span
+                  ref={(el) => (linksRef.current[index] = el)}
+                  className="text-2xl font-bold text-white hover:text-primary transition-colors mb-2 cursor-pointer"
+                >
+                  {link.name}
+                </span>
+              )}
               {link.dropdown && (
                 <div className="flex flex-col space-y-2 mt-2">
                   {link.dropdown.map((item) => (

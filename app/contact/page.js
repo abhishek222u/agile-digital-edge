@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { Send, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export default function Contact() {
   const containerRef = useRef(null);
@@ -73,7 +73,7 @@ export default function Contact() {
   };
 
   return (
-    <div ref={containerRef} className="pt-32 pb-20 min-h-screen relative overflow-hidden">
+    <div ref={containerRef} className="pt-46 pb-20 min-h-screen relative overflow-hidden">
       {/* Background Blob */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent -z-10"></div>
 

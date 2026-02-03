@@ -13,9 +13,9 @@ export const metadata = {
   title: "AgileDigitalEdge | Modern Digital Agency",
   description: "Building Digital Experiences That Give You an Edge. Web Development, Product Design, and more.",
   icons: {
-    icon: "/logo/Logo-black.jpg",
-    shortcut: "/logo/Logo-black.jpg",
-    apple: "/logo/Logo-black.jpg",
+    icon: "/logo/agile.png",
+    shortcut: "/logo/agile.png",
+    apple: "/logo/agile.png",
   },
 };
 

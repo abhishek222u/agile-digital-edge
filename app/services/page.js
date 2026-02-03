@@ -1,66 +1,77 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
-import { Code, Palette, Zap, Layers, Smartphone, Globe, PenTool, Database, ShoppingCart, Search, Share2 } from "lucide-react";
+import { Code, Palette, Zap, Smartphone, Globe, PenTool, Database, ShoppingCart, Search, Share2 } from "lucide-react";
 
 const servicesList = [
   {
     icon: <Globe size={40} />,
     title: "Web Development",
+    slug: "web-development",
     desc: "Custom web applications built with Next.js, React, and Node.js. Fast, secure, and scalable.",
     tags: ["Next.js", "React", "Node.js", "Tailwind", "Wordpress"]
   },
   {
     icon: <ShoppingCart size={40} />,
     title: "Ecommerce Development",
+    slug: "ecommerce-development",
     desc: "Custom Ecommerce applications built with Shopify, React, and Node.js. Fast, secure, and scalable.",
     tags: ["Shopify", "React", "Node.js", "Tailwind", "Wordpress"]
   },
   {
     icon: <Code size={40} />,
     title: "Shopify App",
+    slug: "shopify-app",
     desc: "Custom Shopify apps built with Shopify, React, and Node.js. Fast, secure, and scalable.",
     tags: ["Shopify", "Apps", "User Research", "Wireframing"]
   },
   {
     icon: <Palette size={40} />,
     title: "UI/UX Design",
+    slug: "ui-ux-design",
     desc: "User-centric designs that look stunning and function seamlessly across all devices.",
     tags: ["Figma", "Prototyping", "User Research", "Wireframing"]
   },
   {
     icon: <Smartphone size={40} />,
     title: "Mobile App Development",
+    slug: "mobile-app-development",
     desc: "Native and cross-platform mobile apps that provide a smooth user experience.",
     tags: ["React Native", "iOS", "Android", "Flutter"]
   },
   {
     icon: <Search size={40} />,
     title: "Search Engine Optimization",
+    slug: "seo",
     desc: "Improve your online visibility and drive organic traffic with our comprehensive SEO strategies.",
     tags: ["Business Listing", "On-page Optimization", "Off-page Optimization"]
   },
   {
     icon: <Share2 size={40} />,
     title: "Social Media Marketing",
+    slug: "social-media-marketing",
     desc: "Boost your brand presence and engage with your audience across all major social platforms.",
     tags: ["Instagram", "Facebook", "LinkedIn", "Twitter", "Strategy"]
   },
   {
     icon: <Zap size={40} />,
     title: "Brand Strategy",
+    slug: "brand-strategy",
     desc: "Building strong brand identities that communicate your values and vision effectively.",
     tags: ["Logo Design", "Brand Guidelines", "Visual Identity"]
   },
   {
     icon: <PenTool size={40} />,
     title: "Content Creation",
+    slug: "content-creation",
     desc: "Engaging content that drives traffic and converts visitors into loyal customers.",
     tags: ["Copywriting", "SEO", "Video Production"]
   },
   {
     icon: <Database size={40} />,
     title: "Cloud Solutions",
+    slug: "cloud-solutions",
     desc: "Scalable cloud infrastructure setup and management for your growing business.",
     tags: ["AWS", "Azure", "Google Cloud", "DevOps"]
   },
@@ -105,9 +116,10 @@ export default function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesList.map((service, index) => (
-            <div
+            <Link
+              href={`/services/${service.slug}`}
               key={index}
-              className="service-card opacity-0 p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 group"
+              className="service-card opacity-0 p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 group block"
             >
               <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
@@ -122,7 +134,7 @@ export default function Services() {
                   </span>
                 ))}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
