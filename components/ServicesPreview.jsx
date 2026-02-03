@@ -128,6 +128,12 @@ export default function ServicesPreview() {
     onSelect(emblaApi);
     emblaApi.on("reInit", onSelect);
     emblaApi.on("select", onSelect);
+
+    const autoScroll = setInterval(() => {
+      if (emblaApi) emblaApi.scrollNext();
+    }, 3000);
+
+    return () => clearInterval(autoScroll);
   }, [emblaApi, onSelect]);
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
