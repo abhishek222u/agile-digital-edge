@@ -3,9 +3,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Spotlight } from "@/components/ui/Spotlight";
 import Link from "next/link";
-import { ArrowRight, Calendar, User, Clock } from "lucide-react";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 
-// Mock Data for Blogs
 const blogs = [
     {
         id: 1,
@@ -13,7 +12,7 @@ const blogs = [
         excerpt:
             "Explore the latest trends in Shopify tailored for scaling e-commerce businesses. From Hydrogen to Oxygen, see what's changing.",
         date: "Feb 10, 2024",
-        author: "Sarah Jenkins",
+        author: "Aditi Sharma",
         readTime: "5 min read",
         category: "E-commerce",
         image: "https://images.unsplash.com/photo-1664575198308-3959904fa430?q=80&w=2671&auto=format&fit=crop",
@@ -24,7 +23,7 @@ const blogs = [
         excerpt:
             "A deep dive into server-side rendering, static generation, and how to make your Next.js applications lightning fast.",
         date: "Feb 08, 2024",
-        author: "Michael Chen",
+        author: "Rahul Verma",
         readTime: "8 min read",
         category: "Web Development",
         image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2670&auto=format&fit=crop",
@@ -35,7 +34,7 @@ const blogs = [
         excerpt:
             "Understanding the direct correlation between good user experience design and your business's return on investment.",
         date: "Feb 05, 2024",
-        author: "Emily Rodriguez",
+        author: "Priya Patel",
         readTime: "6 min read",
         category: "Design",
         image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2670&auto=format&fit=crop",
@@ -46,7 +45,7 @@ const blogs = [
         excerpt:
             "Strategies for moving away from outdated monoliths to flexible, scalable microservices architectures.",
         date: "Jan 28, 2024",
-        author: "David Park",
+        author: "Arjun Singh",
         readTime: "10 min read",
         category: "Engineering",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop",
@@ -57,7 +56,7 @@ const blogs = [
         excerpt:
             "How to leverage Artificial Intelligence to personalize shopping experiences and increase average order value.",
         date: "Jan 20, 2024",
-        author: "Olivia Patel",
+        author: "Sneha Gupta",
         readTime: "7 min read",
         category: "AI & Tech",
         image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop",
@@ -68,7 +67,7 @@ const blogs = [
         excerpt:
             "Best practices for developing custom applications that can handle millions of users without breaking a sweat.",
         date: "Jan 15, 2024",
-        author: "Robert Wilson",
+        author: "Vikram Malhotra",
         readTime: "9 min read",
         category: "Development",
         image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=2670&auto=format&fit=crop",
