@@ -68,12 +68,12 @@ const selectedWorks = [
     image: "/compression.jpeg",
     tech: ["Shopify"],
   },
-  {
-    title: "SundanceYoga",
-    category: "Yoga And Healing",
-    image: "/sundanceyoga.jpeg",
-    tech: ["WordPress", "HTML", "CSS", "JS"],
-  },
+  // {
+  //   title: "SundanceYoga",
+  //   category: "Yoga And Healing",
+  //   image: "/sundanceyoga.jpeg",
+  //   tech: ["WordPress", "HTML", "CSS", "JS"],
+  // },
 ];
 
 export default function SelectedWork() {
