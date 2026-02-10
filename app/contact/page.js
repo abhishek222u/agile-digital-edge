@@ -25,7 +25,7 @@ export default function Contact() {
         opacity: 0,
         duration: 1,
         stagger: 0.2,
-        ease: "power3.out"
+        ease: "power3.out",
       });
     }, containerRef);
     return () => ctx.revert();
@@ -35,14 +35,17 @@ export default function Contact() {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.consent) {
-      setStatus({ type: "error", message: "Please agree to the privacy policy to continue." });
+      setStatus({
+        type: "error",
+        message: "Please agree to the privacy policy to continue.",
+      });
       return;
     }
 
@@ -59,21 +62,42 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        setStatus({ type: "success", message: "Message sent successfully! We'll be in touch." });
-        setFormData({ name: "", company: "", email: "", phone: "", service: "", budget: "", message: "", consent: false });
+        setStatus({
+          type: "success",
+          message: "Message sent successfully! We'll be in touch.",
+        });
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          service: "",
+          budget: "",
+          message: "",
+          consent: false,
+        });
       } else {
-        setStatus({ type: "error", message: "Failed to send message. Please try again." });
+        setStatus({
+          type: "error",
+          message: "Failed to send message. Please try again.",
+        });
       }
     } catch (error) {
       console.error(error);
-      setStatus({ type: "error", message: "Something went wrong. Please try again later." });
+      setStatus({
+        type: "error",
+        message: "Something went wrong. Please try again later.",
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div ref={containerRef} className="pt-46 pb-20 min-h-screen relative overflow-hidden">
+    <div
+      ref={containerRef}
+      className="pt-46 pb-20 min-h-screen relative overflow-hidden"
+    >
       {/* Background Blob */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent -z-10"></div>
 
@@ -81,9 +105,12 @@ export default function Contact() {
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Contact Info */}
           <div className="lg:w-1/3 contact-anim">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Let&apos;s Talk</h1>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Let&apos;s Talk
+            </h1>
             <p className="text-xl text-gray-400 mb-12">
-              Is your website collecting dust on page two of Google? It&apos;s time to change that. Let&apos;s connect and make it happen.
+              Is your website collecting dust on page two of Google? It&apos;s
+              time to change that. Let&apos;s connect and make it happen.
             </p>
 
             <div className="space-y-8">
@@ -92,7 +119,9 @@ export default function Contact() {
                   <Mail />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-1">Email Us</h3>
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    Email Us
+                  </h3>
                   <p className="text-gray-400">hello@agiledigitaledge.com</p>
                 </div>
               </div>
@@ -104,6 +133,7 @@ export default function Contact() {
                 <div>
                   <h3 className="text-lg font-bold text-white mb-1">Call Us</h3>
                   <p className="text-gray-400">+91 6393173883</p>
+                  <p className="text-gray-400">+(561) 327-7682</p>
                 </div>
               </div>
 
@@ -112,8 +142,13 @@ export default function Contact() {
                   <MapPin />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-1">Visit Us</h3>
-                  <p className="text-gray-400">Tower A, Urbtech Trade Centre, A-319, Noida, Uttar Pradesh 201301</p>
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    Visit Us
+                  </h3>
+                  <p className="text-gray-400">
+                    Tower A, Urbtech Trade Centre, A-319, Noida, Uttar Pradesh
+                    201301
+                  </p>
                 </div>
               </div>
             </div>
@@ -121,7 +156,10 @@ export default function Contact() {
 
           {/* Contact Form */}
           <div className="lg:w-2/3 contact-anim">
-            <form onSubmit={handleSubmit} className="p-8 md:p-12 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md">
+            <form
+              onSubmit={handleSubmit}
+              className="p-8 md:p-12 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="relative">
                   <input
@@ -178,7 +216,9 @@ export default function Contact() {
                     onChange={handleChange}
                     className="w-full bg-white text-gray-900 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition-all appearance-none cursor-pointer"
                   >
-                    <option value="" disabled>Select Services</option>
+                    <option value="" disabled>
+                      Select Services
+                    </option>
                     <option value="Web Development">Web Development</option>
                     <option value="Mobile App">Mobile App</option>
                     <option value="UI/UX Design">UI/UX Design</option>
@@ -194,7 +234,9 @@ export default function Contact() {
                     onChange={handleChange}
                     className="w-full bg-white text-gray-900 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition-all appearance-none cursor-pointer"
                   >
-                    <option value="" disabled>Select Budget</option>
+                    <option value="" disabled>
+                      Select Budget
+                    </option>
                     <option value="< $5k">&lt; $5k</option>
                     <option value="$5k - $10k">$5k - $10k</option>
                     <option value="$10k - $20k">$10k - $20k</option>
@@ -225,13 +267,22 @@ export default function Contact() {
                   id="consent"
                   className="mt-1 w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer"
                 />
-                <label htmlFor="consent" className="ml-3 text-xs text-gray-400 leading-relaxed">
-                  By checking this box, you agree to receive SMS messages from Agile Digital Edge related to conversation purposes. You may reply STOP to opt out at any time. Reply HELP for assistance. Messages and data rates may apply. Message frequency will vary, please visit our Privacy Policy.
+                <label
+                  htmlFor="consent"
+                  className="ml-3 text-xs text-gray-400 leading-relaxed"
+                >
+                  By checking this box, you agree to receive SMS messages from
+                  Agile Digital Edge related to conversation purposes. You may
+                  reply STOP to opt out at any time. Reply HELP for assistance.
+                  Messages and data rates may apply. Message frequency will
+                  vary, please visit our Privacy Policy.
                 </label>
               </div>
 
               {status && (
-                <div className={`mb-6 text-center text-sm font-medium ${status.type === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                <div
+                  className={`mb-6 text-center text-sm font-medium ${status.type === "success" ? "text-green-400" : "text-red-400"}`}
+                >
                   {status.message}
                 </div>
               )}
